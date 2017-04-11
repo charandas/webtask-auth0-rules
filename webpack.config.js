@@ -21,6 +21,7 @@ module.exports = Request.get(LIST_MODULES_URL, { json: true }).then(function (da
       return _.set(acc, module.name, true);
     }, {
       // Not provisioned via verquire
+      'auth0@2.4.0': true,
       'auth0-api-jwt-rsa-validation': true,
       'auth0-authz-rules-api': true,
       'auth0-oauth2-express': true,

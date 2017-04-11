@@ -36,7 +36,7 @@
     "url": "https://github.com/charandas/webtask-auth0-rules/issues"
   },
   "homepage": "https://github.com/charandas/webtask-auth0-rules#readme",
-  "devDependencies": {
+  "dependencies": {
     "auth0": "^2.6.0",
     "axios": "^0.15.2",
     "bluebird": "^3.4.6",
