@@ -4,3 +4,4 @@ node-debug.log
 public/dist
 build/
 .env.js
+npm-debug.log

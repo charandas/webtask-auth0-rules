@@ -1,0 +1,25 @@
+<div id="main-container" flex-container="column">
+  <div flex-item-align="center" flex-container="row" class="mt+++">
+      <span style="cursor: default;" class="fs-display-2 display-block">Auth0 Rules From Management APIv2</span>
+  </div>
+
+  <div flex-container="row" flex-align="center">
+    <lx-data-table id="rules" lx-selectable="true" lx-thead="vm.rulesContextHeader" lx-tbody="vm.rulesContext"></lx-data-table>
+  </div>
+
+  <div class="card tc-black-2 mt++ p+" ng-repeat="rule in vm.selectedRows">
+    <div>
+      <span class="fs-display-1 display-block" ng-bind="rule.clientName"></span>
+      <div ng-if="rule.ruleScripts.length">
+        <div class="script" ng-repeat="script in rule.ruleScripts" style="cursor: default;">
+          <span class="fs-headline display-block">Rule {{rule.ruleIds[$index]}}</span>
+          <pre class="fs-body-2 prettyprint" ng-bind="script"></pre>
+          <div class="divider divider--dark"></div>
+        </div>
+      </div>
+      <div ng-if="!rule.ruleScripts.length">
+        <span class="fs-body-2 display-block">No Rules!</span>
+      </div>
+    </div>
+  </div>
+</div>

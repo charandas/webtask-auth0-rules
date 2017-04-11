@@ -1,0 +1,24 @@
+html, body, #container {
+    height: 100%;
+    background-color: $orange-300;
+}
+
+pre {
+  font-family: Hack, monospace;
+}
+
+.card {
+  max-width: 100%;
+}
+
+[ng\:cloak], [ng-cloak], .ng-cloak {
+    display: none !important;
+}
+
+#main-container {
+    height: 100%;
+}
+
+#rules {
+  overflow-y: auto;
+}

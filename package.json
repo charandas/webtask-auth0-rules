@@ -61,13 +61,12 @@
     "dependencies": {
       "angular": "github:angular/bower-angular@^1.6.3",
       "angular-animate": "github:angular/bower-angular-animate@^1.6.3",
-      "angular-qrcode": "npm:angular-qrcode@^7.2.0",
       "angular-route": "github:angular/bower-angular-route@^1.6.3",
       "axios": "npm:axios@^0.15.3",
       "components/font-awesome": "github:components/font-awesome@^4.7.0",
       "css": "github:systemjs/plugin-css@^0.1.33",
       "lodash": "npm:lodash@^4.17.4",
-      "qrcode-generator": "npm:qrcode-generator@^1.1.0",
+      "lumapps/lumX": "github:lumapps/lumX@^1.5.1",
       "text": "github:systemjs/plugin-text@^0.0.9"
     },
     "devDependencies": {
@@ -132,17 +131,6 @@
           }
         }
       },
-      "npm:angular@1.6.3": {
-        "format": "global",
-        "jspmNodeConversion": false,
-        "main": "angular",
-        "meta": {
-          "angular.js": {
-            "exports": "angular",
-            "format": "global"
-          }
-        }
-      },
       "npm:browserify-zlib@0.1.4": {
         "dependencies": {
           "readable-stream": "^2.0.2",
@@ -183,23 +171,6 @@
       "npm:ms@0.7.2": {
         "jspmNodeConversion": false,
         "format": "cjs"
-      },
-      "npm:qrcode-generator@1.1.0": {
-        "meta": {
-          "*": {
-            "format": "global",
-            "exports": "qrcode"
-          }
-        }
-      },
-      "npm:angular-qrcode@7.2.0": {
-        "meta": {
-          "*": {
-            "deps": [
-              "qrcode-generator"
-            ]
-          }
-        }
       }
     }
   }
