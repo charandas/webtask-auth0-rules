@@ -13,9 +13,12 @@ import dashboardTpl from './dashboard.html!text';
 import './styles.css';
 
 function getRulesContext () {
-  return axios
-    .get('/api/rules')
-    .then(response => get(response, 'data'));
+  return axios({
+    url: `${BASE_URI}/api/rules`,
+    method: 'get'
+  })
+    .then(response => get(response, 'data'))
+    .catch(error => console.log(error));
 }
 
 angular
