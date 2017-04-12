@@ -31,7 +31,7 @@ I suggest you use Github pages or similar. You would need to bundle the app like
 
 Note that any mention of webpack and its build configuration is only supplied for running on webtask.
 
-1. Copy `sample-config.json` to a file called `config.json`, and modify the `clientId` and `clientSecret` as well as `domainUrl` and `audience`. Also, supply your `webtaskToken` if applicable, by putting in the result of `wt profile ls --show-token`.
+1. Copy `sample-config.json` to a file called `config.json`, and modify `clientId`, `clientSecret`, `domainUrl` and `audience`. Also, supply your `webtaskToken` if applicable, by putting in the result of `wt profile ls --show-token`.
 2. Next, run `npm run deploy-webtask` to deploy the node backend.
 
 ### Other Cloud Environments

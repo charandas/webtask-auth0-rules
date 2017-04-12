@@ -3,7 +3,5 @@ jspm_packages
 node-debug.log
 public/dist
 build/
-.env.js
-npm-debug.log
 config.json
 public/config.json

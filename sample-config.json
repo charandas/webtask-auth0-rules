@@ -1,7 +1,9 @@
 {
-  "useWebtask": true,
-  "baseUrl": "https://your-domain.auth0.com",
-  "clientId": "CLIENT_ID_OF_A_NON_INTERACTIVE_APP",
-  "clientSecret": "CLIENT_SECRET_OF_A_NON_INTERACTIVE_APP",
-  "audience": "https://your-domain.auth0.com/api/v2/""
+  "webtaskToken": "WEBTASK_TOKEN_FOR_DEPLOYMENT",
+  "secrets": {
+    "domainUrl": "https://your-domain.auth0.com",
+    "clientId": "CLIENT_ID_OF_A_NON_INTERACTIVE_APP",
+    "clientSecret": "CLIENT_SECRET_OF_A_NON_INTERACTIVE_APP",
+    "audience": "https://your-domain.auth0.com/api/v2/"
+  }
 }

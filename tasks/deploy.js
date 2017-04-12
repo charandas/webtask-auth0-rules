@@ -5,8 +5,6 @@ const pjson = require('../package.json');
 
 var profile = Sandbox.fromToken(config.webtaskToken);
 
-delete config.webtaskToken;
-
 fs.readFile(`./build/${pjson.name}.js`, function (err, code) {
   if (err) {
     throw err;
@@ -14,7 +12,7 @@ fs.readFile(`./build/${pjson.name}.js`, function (err, code) {
 
   profile.create(code.toString(), {
     name: pjson.name,
-    secrets: config
+    secrets: config.secrets
   }, function (error, webtask) {
     if (error) {
       throw error;
