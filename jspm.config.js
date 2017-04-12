@@ -2,7 +2,7 @@ SystemJS.config({
   paths: {
     'npm:': 'jspm_packages/npm/',
     'github:': 'jspm_packages/github/',
-    'webtask-auth0-rules/': 'src/'
+    'webtask-auth0-rules/': ''
   },
   browserConfig: {
     'baseURL': '/'
@@ -50,6 +50,7 @@ SystemJS.config({
     'fs': 'npm:jspm-nodelibs-fs@0.2.1',
     'http': 'npm:jspm-nodelibs-http@0.2.0',
     'https': 'npm:jspm-nodelibs-https@0.2.2',
+    'json': 'github:systemjs/plugin-json@0.3.0',
     'lodash': 'npm:lodash@4.17.4',
     'lumapps/lumX': 'github:lumapps/lumX@1.5.1',
     'os': 'npm:jspm-nodelibs-os@0.2.1',
