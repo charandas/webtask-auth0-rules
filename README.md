@@ -24,13 +24,11 @@ audience     = your-domain.auth0.com/api/v2/
 
 ```js
 Array({
-    {
-      clientName: String,
-      clientId  : String,
-      rules     : Array({
-        ruleId     : String,
-        ruleScript : String
-      })
-    }
+  clientName: String,
+  clientId  : String,
+  rules     : Array({
+    ruleId     : String,
+    ruleScript : String
+  })
 })
 ```
