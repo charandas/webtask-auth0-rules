@@ -15,10 +15,6 @@ pre {
     display: none !important;
 }
 
-#main-container {
-    height: 100%;
-}
-
 #rules {
   overflow-y: auto;
 }

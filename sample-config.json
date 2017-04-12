@@ -1,3 +1,6 @@
 {
-  "AUTH0_RULES_APP_BASEURL": "https://pathtoapp.com"
+  "rulesAppBaseUrl": "https://wt-some-guid.run.webtask.io/webtask-auth0-rules",
+  "clientId": "CLIENT_ID",
+  "redirectUrl": "http://localhost:4001/callback",
+  "domainUrl": "yourdomain.auth0.com"
 }

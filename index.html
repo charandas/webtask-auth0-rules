@@ -2,13 +2,21 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Auth0 Rules on Webtask</title>
   <link rel="stylesheet" href="//cdn.jsdelivr.net/font-hack/2.020/css/hack-extended.min.css">
 </head>
 <body id="container" unselectable="on" class="unselectable" ng-app="webtask-auth0-rules">
   <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
   <script src="dist/bundle.js"></script>
-  <ng-view />
+  <div id="main-container" flex-container="row" flex-column="12 flex-align="center" class="m+++">
+    <div flex-item="2"></div>
+    <header flex-item="8">
+      <div style="cursor: default;" class="fs-display-1 display-block">Auth0 Rules From Management APIv2</div>
+    </header>
+    <lx-button class="logout" ng-if="isAuthenticated" flex-item="2" lx-type="flat" ng-click="authService.logout()">Log Out</lx-button>
+    <lx-button class="login" ng-if="!isAuthenticated" flex-item="2" lx-type="flat" ng-click="authService.login()">Log In</lx-button>
+  </div>
+  <ui-view flex-container="row" flex-column="12" class="mt+++">
 </body>
 </html>
