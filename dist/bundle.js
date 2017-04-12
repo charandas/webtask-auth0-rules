@@ -43634,7 +43634,7 @@ $__System.registerDynamic('a2', ['86', '8c', 'a1', '49'], true, function ($__req
 $__System.register('a', ['b', 'c', '29', '5b', 'd', 'e', 'a2', 'f'], function (_export, _context) {
   "use strict";
 
-  var angular, axios, get, map, axios$1, dashboardTpl, BASE_URI$1;
+  var angular, axios, get, map, BASE_URI, axios$1, dashboardTpl;
 
 
   function DashboardController(rulesContext, $scope, $filter) {
@@ -43679,7 +43679,7 @@ $__System.register('a', ['b', 'c', '29', '5b', 'd', 'e', 'a2', 'f'], function (_
 
   function getRulesContext() {
     return axios$1({
-      url: BASE_URI$1 + '/api/rules',
+      url: '/api/rules',
       method: 'get'
     }).then(function (response) {
       return get(response, 'data');
@@ -43699,12 +43699,12 @@ $__System.register('a', ['b', 'c', '29', '5b', 'd', 'e', 'a2', 'f'], function (_
       map = _a.default;
     }, function (_f) {}],
     execute: function () {
+      BASE_URI = 'https://wt-511d6c5e91afae05e2f1468adca2fdd5-0.run.webtask.io/webtask-auth0-rules';
       axios$1 = axios.create({
         baseURL: BASE_URI,
         timeout: 5000
       });
       dashboardTpl = "<div id=\"main-container\" flex-container=\"column\">\n  <div flex-item-align=\"center\" flex-container=\"row\" class=\"mt+++\">\n      <span style=\"cursor: default;\" class=\"fs-display-2 display-block\">Auth0 Rules From Management APIv2</span>\n  </div>\n\n  <div flex-container=\"row\" flex-align=\"center\">\n    <lx-data-table id=\"rules\" lx-selectable=\"true\" lx-thead=\"vm.rulesContextHeader\" lx-tbody=\"vm.rulesContext\"></lx-data-table>\n  </div>\n\n  <div class=\"card tc-black-2 mt++ p+\" ng-repeat=\"rule in vm.selectedRows\">\n    <div>\n      <span class=\"fs-display-1 display-block\" ng-bind=\"rule.clientName\"></span>\n      <div ng-if=\"rule.ruleScripts.length\">\n        <div class=\"script\" ng-repeat=\"script in rule.ruleScripts\" style=\"cursor: default;\">\n          <span class=\"fs-headline display-block\">Rule {{rule.ruleIds[$index]}}</span>\n          <pre class=\"fs-body-2 prettyprint\" ng-bind=\"script\"></pre>\n          <div class=\"divider divider--dark\"></div>\n        </div>\n      </div>\n      <div ng-if=\"!rule.ruleScripts.length\">\n        <span class=\"fs-body-2 display-block\">No Rules!</span>\n      </div>\n    </div>\n  </div>\n</div>\n";
-      BASE_URI$1 = 'https://wt-511d6c5e91afae05e2f1468adca2fdd5-0.run.webtask.io/webtask-auth0-rules';
       angular.module('webtask-auth0-rules', ['ngRoute', 'lumx']).config(function ($routeProvider) {
         $routeProvider.when('/', {
           controller: DashboardController,
