@@ -4,4 +4,5 @@ node-debug.log
 public/dist
 build/
 config.json
+cors-config.json
 public/config.json
