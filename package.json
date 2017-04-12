@@ -9,8 +9,7 @@
       "public/jspm_packages"
     ],
     "globals": [
-      "SystemJS",
-      "BASE_URI"
+      "SystemJS"
     ]
   },
   "scripts": {
@@ -18,10 +17,10 @@
     "semistandard": "./node_modules/.bin/semistandard",
     "jspm": "./node_modules/.bin/jspm",
     "nodemon": "./node_modules/.bin/nodemon",
-    "frontend-local": "jspm bundle app/main.js public/dist/bundle.js -wd",
+    "frontend-local": "jspm build app/main.js public/dist/bundle.js -wd",
     "frontend": "jspm install && jspm build app/main.js public/dist/bundle.js",
     "build-prod": "webpack -d",
-    "deploy-webtask": "semistandard && npm run build-prod && wt create build/$(node -e 'console.log(require(\"./package.json\").name)').js",
+    "deploy-webtask": "semistandard && npm run build-prod && node ./tasks/deploy.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -38,7 +37,7 @@
   },
   "homepage": "https://github.com/charandas/webtask-auth0-rules#readme",
   "dependencies": {
-    "auth0": "^2.6.0",
+    "auth0": "2.4.0",
     "axios": "^0.15.2",
     "bluebird": "^3.4.6",
     "body-parser": "^1.17.1",
@@ -66,6 +65,7 @@
       "axios": "npm:axios@^0.15.3",
       "components/font-awesome": "github:components/font-awesome@^4.7.0",
       "css": "github:systemjs/plugin-css@^0.1.33",
+      "json": "github:systemjs/plugin-json@^0.3.0",
       "lodash": "npm:lodash@^4.17.4",
       "lumapps/lumX": "github:lumapps/lumX@^1.5.1",
       "text": "github:systemjs/plugin-text@^0.0.9"
@@ -174,5 +174,9 @@
         "format": "cjs"
       }
     }
+  },
+  "devDependencies": {
+    "sandboxjs": "^3.4.2",
+    "superagent-debugger": "^1.2.6"
   }
 }

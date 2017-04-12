@@ -1,10 +1,4 @@
-# Webtask Auth0 Rules using express
-
-Fashioned on the boilerplate repo provided [here](https://github.com/auth0/webtask-everywhere). Some specific details follow:
-
-1. `webpack` for bundling server code
-2. `jspm` for bundling frontend code, since that's what I am used to
-3. `npm run deploy-webtask` would deploy it.
+# Auth0 Rules App
 
 ## Secrets
 
@@ -32,3 +26,22 @@ Array({
   })
 })
 ```
+
+## Frontend Deployment
+
+I suggest you use Github pages or similar. You would need to bundle the app like so:
+
+1. Copy `public/sample-config.json` to `public/config.json`, and make appropriate modifications there.
+2. `npm run frontend`
+3. `git add public`
+4. `git commit -m "Deploy frontend"`
+5. `git push && git subtree push --prefix public origin gh-pages`
+
+## Backend Deployment
+
+### Webtask
+
+Fashioned on the boilerplate repo provided [here](https://github.com/auth0/webtask-everywhere). You can deploy after carrying out the following steps:
+
+1. Copy `sample-config.json` to a file called `config.json`, and modify the `clientId` and `clientSecret` as well as `domainUrl` and `audience`. Note that `"useWebtask": true` would only be applicable in a webpack build. It would otherwise not apply. Also, supply your `webtaskToken` if applicable, by putting in the result of `wt profile ls --show-token`.
+2. Next, run `npm run deploy-webtask` to deploy the node backend.
