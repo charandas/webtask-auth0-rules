@@ -12,6 +12,8 @@ import dashboardTpl from './dashboard.html!text';
 
 import './styles.css';
 
+const BASE_URI = 'https://wt-511d6c5e91afae05e2f1468adca2fdd5-0.run.webtask.io/webtask-auth0-rules';
+
 function getRulesContext () {
   return axios({
     url: `${BASE_URI}/api/rules`,
