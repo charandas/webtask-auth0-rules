@@ -39,7 +39,7 @@ Note that any mention of webpack and its build configuration is only supplied fo
 Clone this repo, run npm install, and run the node process as you would do. (Docker build coming soon.)
 
 ```
-git@github.com:charandas/webtask-auth0-rules.git
+git clone git@github.com:charandas/webtask-auth0-rules.git
 npm install
 node ./
 ```
