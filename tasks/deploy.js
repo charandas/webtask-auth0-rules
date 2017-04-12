@@ -5,6 +5,8 @@ const pjson = require('../package.json');
 
 var profile = Sandbox.fromToken(config.webtaskToken);
 
+delete config.webtaskToken;
+
 fs.readFile(`./build/${pjson.name}.js`, function (err, code) {
   if (err) {
     throw err;

@@ -2,7 +2,6 @@ const Path = require('path');
 const Request = require('request-promise');
 const Webpack = require('webpack');
 const _ = require('lodash');
-const config = require('./config.json');
 
 var LIST_MODULES_URL = 'https://webtask.it.auth0.com/api/run/wt-tehsis-gmail_com-1?key=eyJhbGciOiJIUzI1NiIsImtpZCI6IjIifQ.eyJqdGkiOiJmZGZiOWU2MjQ0YjQ0YWYyYjc2YzAwNGU1NjgwOGIxNCIsImlhdCI6MTQzMDMyNjc4MiwiY2EiOlsiZDQ3ZDNiMzRkMmI3NGEwZDljYzgwOTg3OGQ3MWQ4Y2QiXSwiZGQiOjAsInVybCI6Imh0dHA6Ly90ZWhzaXMuZ2l0aHViLmlvL3dlYnRhc2tpby1jYW5pcmVxdWlyZS90YXNrcy9saXN0X21vZHVsZXMuanMiLCJ0ZW4iOiIvXnd0LXRlaHNpcy1nbWFpbF9jb20tWzAtMV0kLyJ9.MJqAB9mgs57tQTWtRuZRj6NCbzXxZcXCASYGISk3Q6c';
 
@@ -35,7 +34,7 @@ module.exports = Request.get(LIST_MODULES_URL, { json: true }).then(function (da
       new Webpack.optimize.DedupePlugin(),
       new Webpack.DefinePlugin({
         'process.env': {
-          WEBTASK: JSON.stringify(config.useWebtask)
+          WEBTASK: JSON.stringify(true)
         }
       })
     ],
