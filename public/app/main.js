@@ -2,7 +2,6 @@ import angular from 'angular';
 import 'angular-route';
 import axios from './axios';
 import get from 'lodash/get';
-import 'components/font-awesome';
 
 import 'lumapps/lumX/dist/lumx';
 import 'lumapps/lumX/dist/lumx.css!css';
