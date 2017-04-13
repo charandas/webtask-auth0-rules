@@ -2,18 +2,21 @@
 
 ## API Specs
 
-`GET /api/rules`: Uses Auth0 Mangement APIv2 to get a `RulesContext`, where the context is defined as:
-
-```js
-Array({
-  clientName: String,
-  clientId  : String,
-  rules     : Array({
-    ruleId     : String,
-    ruleScript : String
+1. `GET /api/rules`: Uses Auth0 Mangement APIv2 to get a `RulesContext`, where the context is defined as:
+  ```js
+  Array({
+    clientName: String,
+    clientId  : String,
+    rules     : Array({
+      ruleId     : String,
+      ruleScript : String
+    })
   })
-})
-```
+  ```
+
+2. `GET /api/invalid-rules`: Uses Auth0 Management APIv2 to get a `RulesContext` (similar to above), with the difference that
+only those rules are reported that had a `context.clientId ===` or `context.clientName` proceeded by a invalid id or name, one
+that does not exist under your Auth0 account
 
 ## Frontend Deployment
 
