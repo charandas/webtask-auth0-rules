@@ -177,6 +177,7 @@
   },
   "devDependencies": {
     "sandboxjs": "^3.4.2",
-    "superagent-debugger": "^1.2.6"
+    "superagent-debugger": "^1.2.6",
+    "tape": "^4.6.3"
   }
 }
