@@ -9,7 +9,7 @@ function getRulesContext () {
     .catch(error => console.log(error));
 }
 
-export default function DashboardController (authService, $scope, $filter, $interval) {
+export default function DashboardController (authService, $scope, $filter, $interval, LxDataTableService) {
   'ngInject';
   const vm = this;
 
@@ -53,13 +53,13 @@ export default function DashboardController (authService, $scope, $filter, $inte
     function updateSort (_event, _dataTableId, _column) {
       vm.rulesContext = $filter('orderBy')(vm.rulesContext, _column.name, _column.sort === 'desc');
     }
-
-    this.selectedRows = [];
   };
 
   this.isLoading = undefined;
 
   this.reloadRules = () => {
+    LxDataTableService.unselectAll('rules');
+    this.selectedRows = [];
     this.isLoading = getRulesContext()
       .then(init);
   };
