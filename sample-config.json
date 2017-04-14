@@ -1,10 +1,10 @@
 {
   "webtaskToken": "WEBTASK_TOKEN_FOR_DEPLOYMENT",
-  "thisApiAudience": "http://any-value-you-used-while-defining-the-api-on-auth0",
   "secrets": {
-    "domainUrl": "https://your-domain.auth0.com",
     "clientId": "CLIENT_ID_OF_A_NON_INTERACTIVE_APP",
     "clientSecret": "CLIENT_SECRET_OF_A_NON_INTERACTIVE_APP",
+    "audienceClaim": "http://any-value-you-used-while-defining-this-api-on-auth0",
+    "domainUrl": "https://your-domain.auth0.com",
     "audience": "https://your-domain.auth0.com/api/v2/"
   }
 }

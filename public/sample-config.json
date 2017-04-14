@@ -3,5 +3,8 @@
   "clientId": "CLIENT_ID",
   "domainUrl": "yourdomain.auth0.com",
   "redirectUrl": "http://gh-pages-or-whereever-you-run-the-spa-app/callback",
-  "customRulesApiAudience": "http://any-value-you-used-while-defining-the-api-on-auth0"
+  "customRulesApiAudience": "http://any-value-you-used-while-defining-the-api-on-auth0",
+  "dashboard": {
+    "refreshInterval": "60"
+  }
 }

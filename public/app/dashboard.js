@@ -1,6 +1,7 @@
 import map from 'lodash/map';
 import axios from './axios';
 import get from 'lodash/get';
+import config from 'webtask-auth0-rules/config.json!json';
 
 function getRulesContext () {
   const bearerToken = window.localStorage.getItem('access_token');
@@ -68,7 +69,10 @@ export default function DashboardController (authService, $scope, $filter, $inte
 
   this.reloadRules();
 
-  const reloadTask = $interval(this.reloadRules, 60000);
+  const refreshInterval = get(config, 'dashboard.refreshInterval');
+  const reloadTask = $interval(this.reloadRules, refreshInterval * 1000);
+
+  this.refreshInterval = refreshInterval;
 
   $scope.$on('$destroy', () => {
     $interval.cancel(reloadTask);
