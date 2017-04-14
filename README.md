@@ -49,7 +49,7 @@ I suggest you use Github pages or similar. You would need to bundle the app like
 Copy `sample-config.json` to a file called `config.json`, and supply all pertinent values. The `audienceClaim`
 refers to the `audience` value for this customer api itself, as defined in Auth0 dashboard.
 
-1. **Webtask**: Note that any mention of webpack and its build configuration is only supplied for running on webtask.
+1. **Webtask**: Note that any mention of webpack and its build configuration is only supplied for running on webtask:
   1. Supply your `webtaskToken` by putting in the result of `wt profile ls --show-token`.
   2. Next, run `npm run deploy-webtask` to deploy the node backend.
 
