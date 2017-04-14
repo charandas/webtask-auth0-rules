@@ -33,7 +33,7 @@ I suggest you use Github pages or similar. You would need to bundle the app like
 ### Prerequisites
 
 1. You would need 1 non interactive client in Auth0 that this API would use to access the Management APIv2.
-2. You would need a custom API defined in the dashboard. This API would be used to refer to this custom app api itself.
+2. You would need a custom API defined in the dashboard. This API would be used to refer to this custom app api itself. For this API, I highly recommend using RS256 cryptography.
 3. You would need a test client of the custom API. This should be auto-created for you when the API is created.
 
 ### Architecture (short story)
