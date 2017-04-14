@@ -36,12 +36,14 @@ SystemJS.config({
     'github:*/*.json'
   ],
   map: {
+    'EvanHahn/HumanizeDuration.js': 'github:EvanHahn/HumanizeDuration.js@3.10.0',
     'angular': 'github:angular/bower-angular@1.6.3',
     'angular-animate': 'github:angular/bower-angular-animate@1.6.3',
     'angular-busy': 'npm:angular-busy@4.1.4',
     'angular-jwt': 'npm:angular-jwt@0.1.9',
     'angular-lock': 'npm:angular-lock@2.0.2',
     'angular-route': 'github:angular/bower-angular-route@1.6.3',
+    'angular-timer': 'npm:angular-timer@1.3.5',
     'angular-ui-router': 'github:angular-ui/angular-ui-router-bower@0.4.2',
     'assert': 'npm:jspm-nodelibs-assert@0.2.1',
     'auth0-js': 'npm:auth0-js@8.5.0',
@@ -61,6 +63,7 @@ SystemJS.config({
     'lodash': 'npm:lodash@4.17.4',
     'lumapps/lumX': 'github:lumapps/lumX@1.5.1',
     'mdi': 'npm:mdi@1.9.33',
+    'moment': 'npm:moment@2.18.1',
     'os': 'npm:jspm-nodelibs-os@0.2.1',
     'path': 'npm:jspm-nodelibs-path@0.2.3',
     'process': 'npm:jspm-nodelibs-process@0.2.1',
@@ -131,6 +134,11 @@ SystemJS.config({
       'map': {
         'stream-browserify': 'npm:stream-browserify@2.0.1'
       }
+    },
+    'npm:angular-timer@1.3.5': {
+      'angular': 'github:angular/bower-angular@1.6.3',
+      'moment': 'npm:moment@2.18.1',
+      'EvanHahn/HumanizeDuration.js': 'github:EvanHahn/HumanizeDuration.js@3.10.0'
     },
     'npm:browserify-zlib@0.1.4': {
       'map': {

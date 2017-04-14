@@ -1,7 +1,7 @@
 <div flex-item="12">
   <div class="p+">
     <lx-button lx-type="fab" ng-click="vm.reloadRules()"><i class="mdi mdi-reload"></i></lx-button>
-    <span fs-body-2>Refreshes every {{vm.refreshInterval}} seconds.</span>
+    <timer ng-if="!vm.hideTimer || !seconds" class="m+++" fs-body-2 interval="1000" countdown="60">Refreshing in {{seconds}}</timer>
   </div>
   <div cg-busy="vm.isLoading">
     <div flex-container="row" flex-align="center">

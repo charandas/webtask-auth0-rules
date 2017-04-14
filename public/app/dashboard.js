@@ -56,11 +56,14 @@ export default function DashboardController (authService, $scope, $filter, $inte
     function updateSort (_event, _dataTableId, _column) {
       vm.rulesContext = $filter('orderBy')(vm.rulesContext, _column.name, _column.sort === 'desc');
     }
+
+    vm.hideTimer = false;
   };
 
   this.isLoading = undefined;
 
   this.reloadRules = () => {
+    this.hideTimer = true;
     LxDataTableService.unselectAll('rules');
     this.selectedRows = [];
     this.isLoading = getRulesContext()
