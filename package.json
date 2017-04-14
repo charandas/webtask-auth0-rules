@@ -17,7 +17,7 @@
     "semistandard": "./node_modules/.bin/semistandard",
     "jspm": "./node_modules/.bin/jspm",
     "nodemon": "./node_modules/.bin/nodemon",
-    "frontend-local": "jspm build app/main.js public/dist/bundle.js -wd",
+    "frontend-local": "jspm bundle app/main.js public/dist/bundle.js -wd",
     "frontend": "jspm install && jspm build app/main.js public/dist/bundle.js",
     "build-prod": "webpack -d",
     "deploy-webtask": "semistandard && npm run build-prod && node ./tasks/deploy.js",
@@ -233,6 +233,7 @@
     }
   },
   "devDependencies": {
+    "json-loader": "^0.5.4",
     "sandboxjs": "^3.4.2",
     "superagent-debugger": "^1.2.6",
     "tape": "^4.6.3"

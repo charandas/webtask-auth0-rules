@@ -30,6 +30,14 @@ module.exports = Request.get(LIST_MODULES_URL, { json: true }).then(function (da
       'sandboxjs': true,
       'webtask-tools': true
     }),
+    module: {
+      loaders: [
+        {
+          test: /\.json$/,
+          loader: 'json-loader'
+        }
+      ]
+    },
     plugins: [
       new Webpack.optimize.DedupePlugin(),
       new Webpack.DefinePlugin({

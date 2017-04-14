@@ -35,6 +35,7 @@ angular
     uiRouter,
     serviceModule
   ])
+  .controller('CallbackController', CallbackController)
   .controller('DashboardController', DashboardController)
   .value('cgBusyDefaults', {
     message: '',
@@ -45,8 +46,9 @@ angular
   })
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, jwtOptionsProvider, lockProvider) {
     'ngInject';
-    $urlRouterProvider.otherwise('/dashboard');
+    $urlRouterProvider.otherwise('/login');
     $locationProvider.hashPrefix('');
+    $locationProvider.html5Mode(true);
 
     jwtOptionsProvider.config({
       tokenGetter: function () {
@@ -71,21 +73,20 @@ angular
         template: dashboardTpl
       });
 
-    console.log(config.redirectUrl);
-
     lockProvider.init({
       clientID: config.clientId,
       domain: config.domainUrl,
       options: {
         _idTokenVerification: false,
-        redirectUrl: config.redirectUrl
-        // oidcConformant: true,
-        /* auth: {
-          responseType: 'token',
+        auth: {
+          redirectUrl: config.redirectUrl,
+          responseType: 'id_token token',
           params: {
-            audience: config.customRulesApiAudience
+            audience: config.customRulesApiAudience,
+            scope: 'openid profile offline_access',
+            device: 'Chrome browser'
           }
-        } */
+        }
       }
     });
   })
