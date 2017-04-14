@@ -5,18 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Auth0 Rules on Webtask</title>
   <link rel="stylesheet" href="//cdn.jsdelivr.net/font-hack/2.020/css/hack-extended.min.css">
+  <base href="/"/>
 </head>
 <body id="container" unselectable="on" class="unselectable" ng-app="webtask-auth0-rules">
   <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
   <script src="dist/bundle.js"></script>
   <div id="main-container" flex-container="row" flex-column="12 flex-align="center" class="m+++">
-    <div flex-item="2"></div>
-    <header flex-item="8">
+    <header flex-item="10" align-items="center">
       <div style="cursor: default;" class="fs-display-1 display-block">Auth0 Rules From Management APIv2</div>
     </header>
     <lx-button class="logout" ng-if="isAuthenticated" flex-item="2" lx-type="flat" ng-click="authService.logout()">Log Out</lx-button>
     <lx-button class="login" ng-if="!isAuthenticated" flex-item="2" lx-type="flat" ng-click="authService.login()">Log In</lx-button>
   </div>
-  <ui-view flex-container="row" flex-column="12" class="mt+++">
+  <ui-view flex-container="row" flex-align="center" flex-column="12" class="mt+++">
 </body>
 </html>

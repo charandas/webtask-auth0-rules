@@ -1,5 +1,8 @@
-export default function CallbackController ($location) {
+export default function CallbackController ($state, $rootScope) {
   'ngInject';
-  console.log('In callback');
-  $location.path('/dashboard');
+  if ($rootScope.loginError) {    
+    $state.go('login', {}, { replace: true });
+  } else {
+    $state.go('dashboard', {}, { replace: true });
+  }
 }

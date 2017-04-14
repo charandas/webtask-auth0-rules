@@ -14,6 +14,8 @@ import 'lumapps/lumX/dist/lumx.css!css';
 
 import config from 'webtask-auth0-rules/config.json!json';
 
+import LoginController from './login';
+import loginTpl from './login.html!text';
 import DashboardController from './dashboard';
 import dashboardTpl from './dashboard.html!text';
 import CallbackController from './callback';
@@ -35,6 +37,7 @@ angular
     uiRouter,
     serviceModule
   ])
+  .controller('LoginController', LoginController)
   .controller('CallbackController', CallbackController)
   .controller('DashboardController', DashboardController)
   .value('cgBusyDefaults', {
@@ -48,6 +51,8 @@ angular
     'ngInject';
     $urlRouterProvider.otherwise('/login');
     $locationProvider.hashPrefix('');
+    // This setting would require additionally configuration on github pages
+    // but is necessary to have lock work with access tokens
     $locationProvider.html5Mode(true);
 
     jwtOptionsProvider.config({
@@ -58,7 +63,10 @@ angular
 
     $stateProvider
       .state('login', {
-        url: '/'
+        url: '/',
+        template: loginTpl,
+        controller: 'LoginController',
+        controllerAs: 'vm'
       })
       .state('callback', {
         url: '/callback',
