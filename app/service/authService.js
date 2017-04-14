@@ -2,8 +2,8 @@ export default function authService ($q, $rootScope, $state, lock, authManager) 
   'ngInject';
 
   // Fix this event handler
-  /* $rootScope.$on('$stateChangeStart', function (event, nextState) {
-    $rootScope.isAuthenticated = authManager.isAuthenticated();
+  $rootScope.$on('$stateChangeStart', function (event, nextState) {
+    // $rootScope.isAuthenticated = authManager.isAuthenticated();
     if (nextState.name === 'dashboard') {
       if (!authManager.isAuthenticated()) {
         console.log('Got to login');
@@ -18,7 +18,7 @@ export default function authService ($q, $rootScope, $state, lock, authManager) 
         event.preventDefault();
       }
     }
-  }); */
+  });
 
   function login () {
     lock.show();
