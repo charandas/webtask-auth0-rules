@@ -2,19 +2,12 @@ export default function authService ($q, $rootScope, $state, lock, authManager) 
   'ngInject';
 
   $rootScope.$on('$stateChangeStart', function (event, nextState) {
-    if (nextState.name === 'dashboard') {
-      if (!authManager.isAuthenticated()) {
-        console.log('Got to login');
-        $state.go('login');
-        event.preventDefault();
-      }
-    }
-
-    if (nextState.name === 'login') {
-      if (authManager.isAuthenticated()) {
-        $state.go('dashboard');
-        event.preventDefault();
-      }
+    if (nextState.name !== 'login' && !authManager.isAuthenticated()) {
+      $state.go('login');
+      event.preventDefault();
+    } else if (nextState.name === 'login' && authManager.isAuthenticated()) {
+      $state.go('dashboard');
+      event.preventDefault();
     }
   });
 
