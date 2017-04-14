@@ -49,7 +49,6 @@ SystemJS.config({
     'axios': 'npm:axios@0.15.3',
     'bluebird': 'npm:bluebird@3.5.0',
     'buffer': 'npm:jspm-nodelibs-buffer@0.2.2',
-    'components/font-awesome': 'github:components/font-awesome@4.7.0',
     'constants': 'npm:jspm-nodelibs-constants@0.2.1',
     'crypto': 'npm:jspm-nodelibs-crypto@0.2.1',
     'css': 'github:systemjs/plugin-css@0.1.33',
@@ -77,22 +76,12 @@ SystemJS.config({
     'zlib': 'npm:jspm-nodelibs-zlib@0.2.3'
   },
   packages: {
-    'github:components/font-awesome@4.7.0': {
-      'meta': {
-        '*.css': {
-          'loader': 'css'
-        }
-      }
-    },
     'github:angular/bower-angular@1.6.3': {
-      'map': {
-        'jquery': 'npm:jquery@3.2.1'
-      }
+      'map': {}
     },
     'npm:axios@0.15.3': {
       'map': {
-        'follow-redirects': 'npm:follow-redirects@1.0.0',
-        'bluebird': 'npm:bluebird@3.5.0'
+        'follow-redirects': 'npm:follow-redirects@1.0.0'
       }
     },
     'npm:follow-redirects@1.0.0': {
@@ -325,13 +314,11 @@ SystemJS.config({
     },
     'npm:angular-lock@2.0.2': {
       'map': {
-        'auth0-js': 'npm:auth0-js@8.5.0',
-        'auth0/lock': 'github:auth0/lock@10.14.0'
+        'auth0-js': 'npm:auth0-js@8.5.0'
       }
     },
     'npm:auth0-js@8.5.0': {
       'map': {
-        'qs': 'npm:qs@6.4.0',
         'idtoken-verifier': 'npm:idtoken-verifier@1.0.1',
         'url-join': 'npm:url-join@1.1.0',
         'winchan': 'npm:winchan@0.2.0',
