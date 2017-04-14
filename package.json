@@ -43,7 +43,10 @@
     "body-parser": "^1.17.1",
     "cors": "^2.8.1",
     "express": "^4.15.2",
+    "jsonwebtoken": "^7.3.0",
     "jspm": "0.17.0-beta.41",
+    "jwk-allowed-algorithms": "^1.0.0",
+    "jwk-to-pem": "^1.2.6",
     "lodash": "^4.17.4",
     "nodemon": "^1.11.0",
     "request-promise": "^4.2.0",
@@ -77,6 +80,7 @@
       "lodash": "npm:lodash@^4.17.4",
       "lumapps/lumX": "github:lumapps/lumX@^1.5.1",
       "mdi": "npm:mdi@^1.9.33",
+      "qs": "npm:qs@6.4.0",
       "text": "github:systemjs/plugin-text@^0.0.9",
       "tobiasahlin/SpinKit": "github:tobiasahlin/SpinKit@^1.2.5"
     },
