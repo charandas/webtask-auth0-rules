@@ -65,6 +65,7 @@ SystemJS.config({
     'os': 'npm:jspm-nodelibs-os@0.2.1',
     'path': 'npm:jspm-nodelibs-path@0.2.3',
     'process': 'npm:jspm-nodelibs-process@0.2.1',
+    'qs': 'npm:qs@6.4.0',
     'querystring': 'npm:jspm-nodelibs-querystring@0.2.2',
     'stream': 'npm:jspm-nodelibs-stream@0.2.1',
     'string_decoder': 'npm:jspm-nodelibs-string_decoder@0.2.1',

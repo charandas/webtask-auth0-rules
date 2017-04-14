@@ -2,10 +2,11 @@ export default function authService ($q, $rootScope, $state, lock, authManager) 
   'ngInject';
 
   // Fix this event handler
-  $rootScope.$on('$stateChangeStart', function (event, nextState) {
+  /* $rootScope.$on('$stateChangeStart', function (event, nextState) {
     $rootScope.isAuthenticated = authManager.isAuthenticated();
     if (nextState.name === 'dashboard') {
       if (!authManager.isAuthenticated()) {
+        console.log('Got to login');
         $state.go('login');
         event.preventDefault();
       }
@@ -17,7 +18,7 @@ export default function authService ($q, $rootScope, $state, lock, authManager) 
         event.preventDefault();
       }
     }
-  });
+  }); */
 
   function login () {
     lock.show();
@@ -29,6 +30,8 @@ export default function authService ($q, $rootScope, $state, lock, authManager) 
     console.log('Setting up listener');
     lock.on('authenticated', function (authResult) {
       $rootScope.isAuthenticated = true;
+      console.log(authResult);
+      window.localStorage.setItem('access_token', authResult.accessToken);
       window.localStorage.setItem('id_token', authResult.idToken);
       authManager.authenticate();
     });
@@ -41,6 +44,7 @@ export default function authService ($q, $rootScope, $state, lock, authManager) 
   function logout () {
     $rootScope.isAuthenticated = false;
     window.localStorage.removeItem('id_token');
+    window.localStorage.removeItem('access_token');
     authManager.unauthenticate();
     $state.go('login');
   }

@@ -14,10 +14,10 @@ import 'lumapps/lumX/dist/lumx.css!css';
 
 import config from 'webtask-auth0-rules/config.json!json';
 
-import CallbackController from './callback';
-import callbackTpl from './callback.html!text';
 import DashboardController from './dashboard';
 import dashboardTpl from './dashboard.html!text';
+import CallbackController from './callback';
+import callbackTpl from './callback.html!text';
 
 import serviceModule from './service/module';
 
@@ -35,7 +35,6 @@ angular
     uiRouter,
     serviceModule
   ])
-  .controller('CallbackController', CallbackController)
   .controller('DashboardController', DashboardController)
   .value('cgBusyDefaults', {
     message: '',
@@ -44,10 +43,10 @@ angular
     delay: 0,
     minDuration: 0
   })
-  .config(function ($stateProvider, $urlRouterProvider, jwtOptionsProvider, lockProvider) {
+  .config(function ($stateProvider, $urlRouterProvider, $locationProvider, jwtOptionsProvider, lockProvider) {
     'ngInject';
-    // $locationProvider.hashPrefix('');
     $urlRouterProvider.otherwise('/dashboard');
+    $locationProvider.hashPrefix('');
 
     jwtOptionsProvider.config({
       tokenGetter: function () {
@@ -72,18 +71,27 @@ angular
         template: dashboardTpl
       });
 
+    console.log(config.redirectUrl);
+
     lockProvider.init({
       clientID: config.clientId,
       domain: config.domainUrl,
       options: {
         _idTokenVerification: false,
         redirectUrl: config.redirectUrl
-
+        // oidcConformant: true,
+        /* auth: {
+          responseType: 'token',
+          params: {
+            audience: config.customRulesApiAudience
+          }
+        } */
       }
     });
   })
   .run(function ($rootScope, authService, authManager, lock) {
     'ngInject';
+    lock.interceptHash();
     $rootScope.authService = authService;
     authService.registerAuthenticationListener();
     authManager.checkAuthOnRefresh();
@@ -91,6 +99,4 @@ angular
     Bluebird.setScheduler(function (fn) {
       $rootScope.$evalAsync(fn);
     });
-
-    lock.interceptHash();
   });

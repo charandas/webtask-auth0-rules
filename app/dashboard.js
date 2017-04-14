@@ -3,6 +3,8 @@ import axios from './axios';
 import get from 'lodash/get';
 
 function getRulesContext () {
+  const bearerToken = window.localStorage.getItem('access_token');
+  axios.defaults.headers.common['Authorization'] = `Bearer ${bearerToken}`;
   return axios
     .get('/api/rules')
     .then(response => get(response, 'data'))
@@ -35,7 +37,7 @@ export default function DashboardController (authService, $scope, $filter, $inte
       },
       {
         name: 'ruleIds',
-        label: 'Rule IDs',
+        label: 'Rules',
         sortable: true
       }
     ];
