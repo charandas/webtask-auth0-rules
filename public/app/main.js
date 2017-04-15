@@ -94,7 +94,7 @@ angular
           responseType: 'id_token token',
           params: {
             audience: config.customRulesApiAudience,
-            scope: 'openid profile offline_access',
+            scope: 'openid',
             device: 'Chrome browser'
           }
         }
