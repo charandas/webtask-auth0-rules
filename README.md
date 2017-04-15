@@ -15,8 +15,8 @@
   ```
 
 2. `GET /api/invalid-rules`: Uses Auth0 Management APIv2 to get a `RulesContext` (similar to above), with the difference that
-only those rules are reported that had a `context.clientId ===` or `context.clientName` proceeded by a invalid id or name, one
-that does not exist under your Auth0 account
+only those rules are reported that have a `context.clientId ===` or `context.clientName ===` proceeded by an invalid id or name, one
+that does not exist under your Auth0 tenant.
 
 ## Frontend Deployment
 
@@ -24,9 +24,10 @@ I suggest you use Github pages or similar. You would need to bundle the app like
 
 1. Copy `public/sample-config.json` to `public/config.json`, and make appropriate modifications there.
 2. `npm run frontend`
-3. `git add public`
-4. `git commit -m "Deploy frontend"`
-5. `git push && git subtree push --prefix public origin gh-pages`
+3. Update base tag's href value in `public/index.html` according to where frontend app would live. If on github pages, then that URI, **ENDING IN A TRAILING SLASH**.
+4. `git add public`
+5. `git commit -m "Deploy frontend"`
+6. `git push && git subtree push --prefix public origin gh-pages`
 
 ## Backend
 
@@ -39,7 +40,7 @@ I suggest you use Github pages or similar. You would need to bundle the app like
 ### Architecture (short story)
 
 1. Angular frontend app authenticates against this API, and gets `access_token` and such.
-2. The frontend app used these tokens with bearer authorization to get the `RulesContext` (as defined above).
+2. The frontend app uses these tokens with bearer authorization to get the `RulesContext` (as defined above).
 3. In the background, the custom api written in `node.js` calls the Management APIv2, assembles and sends all the results.
 4. The angular app displays these results in a useable manner.
 
