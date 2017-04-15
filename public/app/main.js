@@ -51,8 +51,8 @@ angular
   })
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $urlMatcherFactoryProvider, jwtOptionsProvider, lockProvider) {
     'ngInject';
-    $urlMatcherFactoryProvider.strictMode(true); // match trailing slashes
-    $urlRouterProvider.otherwise('/');
+    $urlMatcherFactoryProvider.strictMode(false); // don't match trailing slashes
+    $urlRouterProvider.otherwise('');
     $locationProvider.hashPrefix('');
     // This setting would require additionally configuration on github pages
     // but is necessary to have lock work with access tokens
@@ -66,19 +66,19 @@ angular
 
     $stateProvider
       .state('login', {
-        url: '/',
+        url: '',
         template: loginTpl,
         controller: 'LoginController',
         controllerAs: 'vm'
       })
       .state('callback', {
-        url: '/callback/',
+        url: '/callback',
         template: callbackTpl,
         controller: 'CallbackController',
         controllerAs: 'vm'
       })
       .state('dashboard', {
-        url: '/dashboard/',
+        url: '/dashboard',
         controller: 'DashboardController',
         controllerAs: 'vm',
         template: dashboardTpl

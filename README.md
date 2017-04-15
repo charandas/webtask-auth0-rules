@@ -28,6 +28,18 @@ I suggest you use Github pages or similar. You would need to bundle the app like
 4. `git add public`
 5. `git commit -m "Deploy frontend"`
 6. `git push && git subtree push --prefix public origin gh-pages`
+7. `git checkout gh-pages`
+8. Add symlinks so this app can work with Github Pages. Add, commit and push again.
+  ```
+  ln -s index.html 404.html
+  ln -s index.html dashboard.html
+  ln -s index.html callback.html
+  touch .nojekyll
+  git add *.html
+  git add .nojekyll
+  git commit -m "Add symlinks to work with SPA"
+  git push
+  ```
 
 ## Backend
 
