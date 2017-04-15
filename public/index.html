@@ -6,15 +6,6 @@
   <title>Auth0 Rules on Webtask</title>
   <link rel="stylesheet" href="//cdn.jsdelivr.net/font-hack/2.020/css/hack-extended.min.css">
   <base href="/"/>
-  <script>
-    (function(){
-      var redirect = sessionStorage.redirect;
-      delete sessionStorage.redirect;
-      if (redirect && redirect != location.href) {
-        history.replaceState(null, null, redirect);
-      }
-    })();
-  </script>
 </head>
 <body id="container" unselectable="on" class="unselectable" ng-app="webtask-auth0-rules" ng-cloak>
   <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
