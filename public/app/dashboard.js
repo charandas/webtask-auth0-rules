@@ -28,7 +28,7 @@ export default function DashboardController (authService, $scope, $filter, $inte
       });
   }
 
-  function getRulesContext (reloadTask) {
+  function getRulesContext () {
     const bearerToken = window.localStorage.getItem('access_token');
     return axios
       .get('/api/rules', {
@@ -46,7 +46,7 @@ export default function DashboardController (authService, $scope, $filter, $inte
               throw error;
             });
         }
-        $interval.cancel(reloadTask);
+        vm.cancelReloadTask();
         throw error;
       });
   }
@@ -55,7 +55,7 @@ export default function DashboardController (authService, $scope, $filter, $inte
     this.authService = authService;
     this.rulesContext = map(rulesContext, rule => {
       return Object.assign({}, rule, {
-        ruleIds: `${rule.rules.length} Rules`,
+        ruleIds: map(rule.rules, 'ruleId'),
         ruleScripts: map(rule.rules, 'script')
       });
     });
@@ -74,52 +74,113 @@ export default function DashboardController (authService, $scope, $filter, $inte
       {
         name: 'ruleIds',
         label: 'Rules',
-        sortable: true
+        sortable: true,
+        format: (row) => {
+          return `${row.rules.length} Rules`;
+        }
       }
     ];
-
-    $scope.$on('lx-data-table__selected', updateActions);
-    $scope.$on('lx-data-table__unselected', updateActions);
-    $scope.$on('lx-data-table__sorted', updateSort);
-
-    function updateActions (_event, _dataTableId, _selectedRows) {
-      if (_dataTableId === 'rules') {
-        vm.selectedRows = _selectedRows;
-      }
-    }
-
-    function updateSort (_event, _dataTableId, _column) {
-      vm.rulesContext = $filter('orderBy')(vm.rulesContext, _column.name, _column.sort === 'desc');
-    }
-
-    vm.hideTimer = false;
   };
 
+  $scope.$on('lx-data-table__selected', selectedAction);
+  $scope.$on('lx-data-table__unselected', selectedAction);
+  $scope.$on('lx-data-table__sorted', updateSort);
+
+  function selectedAction (_event, _dataTableId, _selectedRows) {
+    // this is within the current data that is loaded
+    if (_dataTableId === 'rules') {
+      if (!vm.disableRefresh && _selectedRows.length === 0) {
+        vm.scheduleReloadTask();
+      } else {
+        vm.cancelReloadTask();
+      }
+      vm.selectedRows = _selectedRows;
+    }
+  }
+
+  function updateSort (_event, _dataTableId, _column) {
+    vm.rulesContext = $filter('orderBy')(vm.rulesContext, _column.name, _column.sort === 'desc');
+  }
+
+  this.disableRefresh = false;
+  this.toggleAutoRefresh = () => {
+    this.disableRefresh = !this.disableRefresh;
+    if (this.disableRefresh) {
+      this.cancelReloadTask();
+    } else {
+      this.scheduleReloadTask();
+    }
+  };
   this.isLoading = undefined;
 
-  // Need to have reloadTask closured in for reloadRules()
-  // Otherwise, there is a chicken-in-the-egg problem
-  let reloadTask;
-  const refreshInterval = get(config, 'dashboard.refreshInterval');
-  this.reloadRules = () => {
-    this.hideTimer = true;
+  function reloadRules () {
     LxDataTableService.unselectAll('rules');
-    this.selectedRows = [];
-    this.isLoading = getRulesContext(reloadTask)
+    // this.selectedRows = []
+    vm.isLoading = getRulesContext()
       .then(init)
-      .catch(() => {
+      .catch(error => {
+        console.log(error);
         // Try once more, in case the session needed to be renewed
-        return getRulesContext(reloadTask)
+        return getRulesContext()
           .then(init);
       });
-  };
-  reloadTask = $interval(this.reloadRules, refreshInterval * 1000);
+  }
 
-  this.reloadRules();
+  this.reloadRules = reloadRules;
+
+  /*
+   * EVERYTHING RELATED TO AUTO REFRESH
+   */
+  const refreshInterval = get(config, 'dashboard.refreshInterval');
+  let reloadTask;
+  let timerTask;
+  let recurringTimerTask;
+  // reloadTask closured in below function
+  // Idempotent call: if already scheduled, nothing is done
+  this.scheduleReloadTask = () => {
+    if (!reloadTask) { // same as !this.disableRefresh
+      showTimer();
+      reloadTask = $interval(reloadRules, refreshInterval * 1000);
+      recurringTimerTask = $interval(showTimer, refreshInterval * 1000);
+    }
+  };
+
+  reloadRules();
+  this.scheduleReloadTask();
+
+  // reloadTask closured in below function
+  this.cancelReloadTask = () => {
+    this.hideTimer = true;
+    if (reloadTask) {
+      $interval.cancel(reloadTask);
+    }
+    if (recurringTimerTask) {
+      $interval.cancel(recurringTimerTask);
+    }
+    if (timerTask) {
+      $interval.cancel(timerTask);
+    }
+    reloadTask = undefined;
+    recurringTimerTask = undefined;
+    timerTask = undefined;
+  };
 
   this.refreshInterval = refreshInterval;
 
   $scope.$on('$destroy', () => {
-    $interval.cancel(reloadTask);
+    this.cancelReloadTask();
   });
+
+  function showTimer () {
+    vm.hideTimer = false;
+    vm.determinateCircularProgressValue = 0;
+
+    timerTask = $interval(function () {
+      if (vm.determinateCircularProgressValue < 100) {
+        vm.determinateCircularProgressValue += (100 / refreshInterval);
+      } else {
+        $interval.cancel(timerTask);
+      }
+    }, 1000);
+  }
 }

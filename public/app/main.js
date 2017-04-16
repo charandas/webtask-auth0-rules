@@ -5,7 +5,6 @@ import 'auth0/lock';
 import 'auth0-js';
 import 'angular-lock';
 import 'angular-jwt';
-import 'angular-timer';
 import Bluebird from 'bluebird';
 
 import 'angular-route';
@@ -35,7 +34,6 @@ angular
     'cgBusy',
     'auth0.lock',
     'angular-jwt',
-    'timer',
     uiRouter,
     serviceModule
   ])

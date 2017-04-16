@@ -1,7 +1,10 @@
 <div flex-item="12">
   <div class="p+">
-    <lx-button lx-type="fab" ng-click="vm.reloadRules()"><i class="mdi mdi-reload"></i></lx-button>
-    <timer ng-if="!vm.hideTimer" class="m+++" fs-body-2 interval="1000" countdown="60">{{!seconds ? '' : 'Refreshing in ' + seconds}}</timer>
+    <lx-button lx-ripple lx-tooltip="Manual Refresh" lx-type="fab" ng-click="vm.reloadRules()"><i class="mdi mdi-reload"></i></lx-button>
+    <lx-button ng-if="!vm.selectedRows.length" lx-ripple lx-tooltip="Auto Refresh ({{vm.refreshInterval}} sec)" lx-type="fab" ng-click="vm.toggleAutoRefresh()"><i class="mdi mdi-clock" ng-class="{'mdi-dark': vm.disableRefresh}"></i></lx-button>
+    <div class="p">
+      <lx-progress lx-type="circular" lx-diameter="75" lx-value="{{ vm.determinateCircularProgressValue }}" ng-if="!vm.hideTimer"></lx-progress>
+    </div>
   </div>
   <div cg-busy="vm.isLoading">
     <div flex-container="row" flex-align="center">
