@@ -1,0 +1,2 @@
+<lx-button ng-if="!$ctrl.parent.selectedRows.length" lx-ripple lx-tooltip="Auto Refresh ({{$ctrl.refreshInterval}} sec)" lx-type="fab" ng-click="$ctrl.toggleAutoRefresh()"><i class="mdi mdi-clock" ng-class="{'mdi-dark': $ctrl.disableRefresh}"></i></lx-button>
+<lx-progress lx-type="circular" lx-diameter="75" lx-value="{{ $ctrl.determinateCircularProgressValue }}" ng-if="!$ctrl.hideTimer"></lx-progress>

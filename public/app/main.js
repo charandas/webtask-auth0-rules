@@ -16,12 +16,11 @@ import config from 'webtask-auth0-rules/config.json!json';
 
 import LoginController from './login';
 import loginTpl from './login.html!text';
-import DashboardController from './dashboard';
-import dashboardTpl from './dashboard.html!text';
 import CallbackController from './callback';
 import callbackTpl from './callback.html!text';
 
 import serviceModule from './service/module';
+import componentModule from './component/module';
 
 import 'mdi/css/materialdesignicons.css!css';
 import 'tobiasahlin/SpinKit/css/spinners/4-wandering-cubes.css!css';
@@ -35,11 +34,11 @@ angular
     'auth0.lock',
     'angular-jwt',
     uiRouter,
-    serviceModule
+    serviceModule,
+    componentModule
   ])
   .controller('LoginController', LoginController)
   .controller('CallbackController', CallbackController)
-  .controller('DashboardController', DashboardController)
   .value('cgBusyDefaults', {
     message: '',
     backdrop: true,
@@ -77,9 +76,11 @@ angular
       })
       .state('dashboard', {
         url: '/dashboard',
-        controller: 'DashboardController',
-        controllerAs: 'vm',
-        template: dashboardTpl
+        template: `
+        <dashboard>
+          <schedule-refresh />
+        </dashboard>
+        `
       });
 
     lockProvider.init({

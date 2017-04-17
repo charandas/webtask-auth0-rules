@@ -16,5 +16,5 @@ pre {
 }
 
 #rules {
-  overflow-y: auto;
+  overflow: auto;
 }

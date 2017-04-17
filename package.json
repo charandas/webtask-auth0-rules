@@ -17,8 +17,8 @@
     "semistandard": "./node_modules/.bin/semistandard",
     "jspm": "./node_modules/.bin/jspm",
     "nodemon": "./node_modules/.bin/nodemon",
-    "frontend-local": "jspm build app/main.js public/dist/bundle.js -wd",
-    "frontend": "jspm install && jspm build app/main.js public/dist/bundle.js",
+    "frontend-local": "jspm build app/main.js public/dist/bundle.js -wd --skip-rollup",
+    "frontend": "jspm install && jspm build app/main.js public/dist/bundle.js --skip-source-maps",
     "build-prod": "webpack -d",
     "deploy-webtask": "semistandard && npm run build-prod && node ./tasks/deploy.js",
     "test": "echo \"Error: no test specified\" && exit 1"
