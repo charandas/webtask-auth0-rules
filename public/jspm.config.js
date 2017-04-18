@@ -19,7 +19,16 @@ SystemJS.config({
       'format': 'esm',
       'meta': {
         '*.js': {
-          'loader': 'plugin-babel'
+          'babelOptions': {
+            'plugins': [
+              [
+                'babel-plugin-angularjs-annotate',
+                {
+                  'explicitOnly': true
+                }
+              ]
+            ]
+          }
         },
         '*.css': {
           'loader': 'css'
@@ -52,6 +61,7 @@ SystemJS.config({
     'auth0-js': 'npm:auth0-js@8.5.0',
     'auth0/lock': 'github:auth0/lock@10.14.0',
     'axios': 'npm:axios@0.15.3',
+    'babel-plugin-angularjs-annotate': 'npm:babel-plugin-angularjs-annotate@0.7.0',
     'bluebird': 'npm:bluebird@3.5.0',
     'buffer': 'npm:jspm-nodelibs-buffer@0.2.2',
     'constants': 'npm:jspm-nodelibs-constants@0.2.1',
@@ -412,6 +422,113 @@ SystemJS.config({
         'hash.js': 'npm:hash.js@1.0.3',
         'minimalistic-assert': 'npm:minimalistic-assert@1.0.0',
         'minimalistic-crypto-utils': 'npm:minimalistic-crypto-utils@1.0.1'
+      }
+    },
+    'npm:babel-plugin-angularjs-annotate@0.7.0': {
+      'map': {
+        'simple-is': 'npm:simple-is@0.2.0',
+        'babel-plugin-transform-es2015-function-name': 'npm:babel-plugin-transform-es2015-function-name@6.24.1',
+        'babel-code-frame': 'npm:babel-code-frame@6.22.0',
+        'babel-types': 'npm:babel-types@6.24.1'
+      }
+    },
+    'npm:babel-plugin-transform-es2015-function-name@6.24.1': {
+      'map': {
+        'babel-types': 'npm:babel-types@6.24.1',
+        'babel-runtime': 'npm:babel-runtime@6.23.0',
+        'babel-helper-function-name': 'npm:babel-helper-function-name@6.24.1'
+      }
+    },
+    'npm:babel-types@6.24.1': {
+      'map': {
+        'esutils': 'npm:esutils@2.0.2',
+        'to-fast-properties': 'npm:to-fast-properties@1.0.2',
+        'babel-runtime': 'npm:babel-runtime@6.23.0',
+        'lodash': 'npm:lodash@4.17.4'
+      }
+    },
+    'npm:babel-code-frame@6.22.0': {
+      'map': {
+        'esutils': 'npm:esutils@2.0.2',
+        'js-tokens': 'npm:js-tokens@3.0.1',
+        'chalk': 'npm:chalk@1.1.3'
+      }
+    },
+    'npm:babel-helper-function-name@6.24.1': {
+      'map': {
+        'babel-runtime': 'npm:babel-runtime@6.23.0',
+        'babel-types': 'npm:babel-types@6.24.1',
+        'babel-template': 'npm:babel-template@6.24.1',
+        'babel-helper-get-function-arity': 'npm:babel-helper-get-function-arity@6.24.1',
+        'babel-traverse': 'npm:babel-traverse@6.24.1'
+      }
+    },
+    'npm:babel-runtime@6.23.0': {
+      'map': {
+        'regenerator-runtime': 'npm:regenerator-runtime@0.10.3',
+        'core-js': 'npm:core-js@2.4.1'
+      }
+    },
+    'npm:chalk@1.1.3': {
+      'map': {
+        'supports-color': 'npm:supports-color@2.0.0',
+        'escape-string-regexp': 'npm:escape-string-regexp@1.0.5',
+        'ansi-styles': 'npm:ansi-styles@2.2.1',
+        'has-ansi': 'npm:has-ansi@2.0.0',
+        'strip-ansi': 'npm:strip-ansi@3.0.1'
+      }
+    },
+    'npm:babel-template@6.24.1': {
+      'map': {
+        'babel-traverse': 'npm:babel-traverse@6.24.1',
+        'babel-runtime': 'npm:babel-runtime@6.23.0',
+        'babel-types': 'npm:babel-types@6.24.1',
+        'lodash': 'npm:lodash@4.17.4',
+        'babylon': 'npm:babylon@6.16.1'
+      }
+    },
+    'npm:babel-helper-get-function-arity@6.24.1': {
+      'map': {
+        'babel-runtime': 'npm:babel-runtime@6.23.0',
+        'babel-types': 'npm:babel-types@6.24.1'
+      }
+    },
+    'npm:babel-traverse@6.24.1': {
+      'map': {
+        'babel-code-frame': 'npm:babel-code-frame@6.22.0',
+        'babel-runtime': 'npm:babel-runtime@6.23.0',
+        'lodash': 'npm:lodash@4.17.4',
+        'babel-types': 'npm:babel-types@6.24.1',
+        'babylon': 'npm:babylon@6.16.1',
+        'debug': 'npm:debug@2.6.3',
+        'globals': 'npm:globals@9.17.0',
+        'babel-messages': 'npm:babel-messages@6.23.0',
+        'invariant': 'npm:invariant@2.2.2'
+      }
+    },
+    'npm:has-ansi@2.0.0': {
+      'map': {
+        'ansi-regex': 'npm:ansi-regex@2.1.1'
+      }
+    },
+    'npm:strip-ansi@3.0.1': {
+      'map': {
+        'ansi-regex': 'npm:ansi-regex@2.1.1'
+      }
+    },
+    'npm:babel-messages@6.23.0': {
+      'map': {
+        'babel-runtime': 'npm:babel-runtime@6.23.0'
+      }
+    },
+    'npm:invariant@2.2.2': {
+      'map': {
+        'loose-envify': 'npm:loose-envify@1.3.1'
+      }
+    },
+    'npm:loose-envify@1.3.1': {
+      'map': {
+        'js-tokens': 'npm:js-tokens@3.0.1'
       }
     }
   }
